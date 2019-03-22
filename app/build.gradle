@@ -4,6 +4,15 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.plumcookingwine.plugin'
+
+upload {
+    pgyerApiKey = "你的apikey（蒲公英）"
+    buildUpdateDescription = "更新描述"
+    // 打包后 APK 路径
+    fileAbsolutePath = "$projectDir\\release\\app-release.apk"
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {

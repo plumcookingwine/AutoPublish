@@ -2,7 +2,8 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
-apply plugin: "com.gradle.plugin-publish"
+//使用 bintray-release 插件
+//apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     compile gradleApi()
@@ -18,17 +19,6 @@ repositories {
     jcenter()
 }
 
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
-    }
-}
-
 //设置maven deployer
 uploadArchives {
     repositories {
@@ -40,26 +30,6 @@ uploadArchives {
             pom.version = "1.0.4"
             //文件发布到下面目录
             repository(url: uri('../repo'))
-        }
-    }
-}
-
-
-
-version = "1.0.0"    //配置插件的版本号
-group = "com.deemons.gradlePlugin"   //插件的群组，插件的classpath会用到
-
-pluginBundle {
-
-    website = 'http://www.gradle.org/'
-    vcsUrl = 'https://github.com/gradle/gradle'
-    description = 'auto publish to pgyer'  //插件描述
-    tags = ['publish', 'publish pgyer', 'auto publish']  //插件的tag。可以通过这个在插件门户上搜索
-
-    plugins {
-        greetingsPlugin {
-            id = 'com.plumcookingwine.plugin'   //插件的id，到时候apply的插件id
-            displayName = 'Auto Publish'
         }
     }
 }
